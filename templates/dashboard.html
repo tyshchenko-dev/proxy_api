@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="overlay d-none">
+    <span class="loader"></span>
+</div>
+
+<div class="notification d-none">
+  <i class="fa-solid fa-check"></i>
+  {{message}}
+</div>
+
+
+
+<div class="error d-none">
+    <button class="error__close">&times;</button>
+    <p class="error__text">
+        Something went wrong!
+    </p>
+</div>
+<section class="proxy">
+    <div class="container">
+        <div class="proxy__header">
+            <div class="proxy__row">
+                <p class="caption">{{data.user | title}}, choose country</p>
+                <select class="proxy__select select__country" name="select_country"></select>
+                <button class="button__proxy button__proxy-search">Proxy search</button>
+            </div>
+            <div class="proxy__row proxy__list d-none">
+                <div class="proxy__settings">
+                    <p class="caption">Proxy list</p>
+                    <select class="proxy__select select__proxy" name="start_proxy" id="start_proxy"></select>
+                    <button class="button__proxy button__proxy-start">Turn on</button>
+                </div>
+            </div>
+        </div>
+        <div class="proxy__main">
+            <table class="styled-table">
+                <caption class="table__caption">Active proxies (<span class="proxy__count">0</span>/10):</caption>
+                    <thead>
+                        <tr>
+                            <th>LOCATION</th>
+                            <th>PROXY</th>
+                            <th>PING</th>
+                            <th>TYPE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="proxy__table">
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <input type="hidden" value="{{jwt_token}}" name="jwt">
+</section>
+<script src="{{ url_for('static', path='index.js') }}"></script>
+
+{% endblock %}

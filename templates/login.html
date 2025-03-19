@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="login">
+  <div class="container">
+    <form action="/user/signin" method="post" class="login__form">
+      <input type="text" name="username" class="login__input" placeholder="Username" required>
+      <input type="password" name="password" class="login__input" placeholder="Password" required>
+      <button type="submit" class="login__button">Login</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
